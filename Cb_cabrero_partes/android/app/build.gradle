@@ -1,0 +1,39 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin" // Flutter plugin se mantiene al final.
+}
+
+android {
+    namespace = "com.example.flutter_application_2"
+    compileSdk = 34 // Usamos una versión explícita y estable.
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8" // Establecemos explícitamente el objetivo para Kotlin.
+    }
+
+    defaultConfig {
+        applicationId = "com.example.flutter_application_2"
+        minSdk = 21 // Valor recomendado para compatibilidad con Flutter.
+        targetSdk = 34 // Usamos un valor estable y actualizado.
+        versionCode = 1
+        versionName = "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug
+            minifyEnabled false // Deshabilitamos el ofuscador para un build básico.
+            shrinkResources false
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
